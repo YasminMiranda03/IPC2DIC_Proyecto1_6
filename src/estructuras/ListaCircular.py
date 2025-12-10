@@ -55,3 +55,20 @@ class ListaCircular:
         return False
     
     #pendiente 
+    #------------------------------------------------------------------------------------------------------
+    def _init_(self, dato):
+        self.primero = None
+        self.ultimo = None
+    
+    def vacia(self):
+        return self.primero == None
+    
+    def agregar_inicio(self, dato):
+        if self.vacia():
+            self.primero = self.ultimo = Nodo(dato)
+            self.ultimo.siguiente = self.primero
+        else:
+            aux = Nodo(dato)
+            aux.siguiente = self.primero
+            self.primero = aux
+            self.ultimo.siguiente = self.primero
