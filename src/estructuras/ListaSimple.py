@@ -37,6 +37,7 @@ class ListaSimple:
     def recorrer(self):   #recorre la lista y devuelve una lista con los datos
         actual = self.cabeza
         while actual:
+            #imprimo uno tras otro
             yield actual.dato
             actual = actual.siguiente
     
