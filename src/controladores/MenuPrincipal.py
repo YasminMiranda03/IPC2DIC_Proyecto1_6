@@ -1,3 +1,5 @@
+from controladores.CentroDatosMenu import menu_centros
+
 def mostrar_menu():
     print("1. Cargar archivo XML")
     print("2. Gestion de centros de datos")
@@ -19,7 +21,7 @@ def menu_principal():
                 #llamar a la funcion
             elif opcion == 2:
                 print("\nGESTION DE CENTRO DE DATOS")
-                #llamar al menu de centros de datos
+                menu_centros(controlador_centros)
             elif opcion == 3:
                 print("\nGESTION DE MAQUINAS VIRTUALES")
                 #llamar al menu de maquinas virtuales
