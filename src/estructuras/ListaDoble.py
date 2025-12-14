@@ -98,3 +98,4 @@ class ListaDoble:
             self.ultimo = self.ultimo.anterior
             self.ultimo.siguiente = None
             self.size -= 1
+    #------------------------------------------------------------------------------------------------------

@@ -49,4 +49,4 @@ class ColaPrioridad:
     
     def obtener_tamanio(self):
         return self.size
-            
+    #.        
