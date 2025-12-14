@@ -55,6 +55,7 @@ class ListaCircular:
         return False
     
     #pendiente 
+    #codigo aux
     #------------------------------------------------------------------------------------------------------
     def _init_(self, dato):
         self.primero = None
