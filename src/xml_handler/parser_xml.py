@@ -15,7 +15,7 @@ class ParserXml:
             root = tree.getroot()
             
             self._procesar_centros(root)
-            self._procesar_Vms(root)
+            self._procesar_vms(root)
             self._procesar_solicitudes(root)
             
             self._procesar_instrucciones(root)
