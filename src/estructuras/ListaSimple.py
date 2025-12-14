@@ -40,4 +40,5 @@ class ListaSimple:
             #imprimo uno tras otro
             yield actual.dato
             actual = actual.siguiente
+    #------------------------------------------------------------------------------------------------------
     

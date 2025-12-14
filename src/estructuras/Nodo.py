@@ -3,3 +3,4 @@ class Nodo:
         self.dato = dato
         self.siguiente = None
         self.anterior = None    #para lista doblemente enlazada
+#------------------------------------------------------------------------------------------------------
