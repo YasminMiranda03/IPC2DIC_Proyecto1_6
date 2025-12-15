@@ -25,7 +25,7 @@ class ParserXml:
             return False, f"El archivo Xml no pudo ser cargado{str(e)}"
         
     def _procesar_centros(self, root):
-        centros = root.find('.//CentroDatos')
+        centros = root.find('.//centroDatos')
         if centros is None:
             return
         for centro_elem in centros.findall('centro'):
@@ -49,7 +49,7 @@ class ParserXml:
     
     
     def _procesar_vms(self, root):
-        vms = root.find('.//MaquinaVirtual')
+        vms = root.find('.//maquinasVirtuales')
         if vms is None:
             return
     
@@ -101,7 +101,7 @@ class ParserXml:
             print(f"El contenedor {id_contenedor} a sido agregado a {id_vm}")
     
     def _procesar_solicitudes(self, root):
-        solicitudes = root.find('.//Solicitud')
+        solicitudes = root.find('.//solicitudes')
         if solicitudes is None:
             return
 
@@ -120,9 +120,6 @@ class ParserXml:
             self.controlador_solicitudes.agregar_solicitud(
             id_solicitud,cliente,tipo,prioridad,cpu,ram,almacenamiento,tiempo_estimmado)
             
-       
-       
-       
             print(f"Solicitud {id_solicitud} ha sido cargada exitosamente")
             
     def _procesar_instrucciones(self, root):
@@ -141,6 +138,7 @@ class ParserXml:
                 self._ejecutar_procesar_solicitudes(inst)
             elif tipo == 'balancearCarga':
                 print("Balanceo de Carga listo")
+                
     def _ejecutar_crear_vm(self, inst):
         id_vm = inst.find('id').text
         centro = inst.find('centro').text
