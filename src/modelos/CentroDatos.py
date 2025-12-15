@@ -1,3 +1,4 @@
+from estructuras.ListaSimple import ListaSinple
 class CentroDatos:
     
     def __init__(self, id_centro, nombre, pais, ciudad, cpu, ram, almacenamiento):
@@ -14,6 +15,8 @@ class CentroDatos:
         self.cpu_disponible = cpu
         self.ram_disponible = ram
         self.almacenamiento_disponible = almacenamiento
+        
+        self.vms = ListaSimple()  
     
     def mostrar_info(self):
         print(f"\nId del centro de datos: {self.id}")
