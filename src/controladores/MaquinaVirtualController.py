@@ -31,7 +31,6 @@ class MaquinaVirtualController:
         return True, f"VM {id_vm} creada en {id_centro}"
 
     def buscar_vm_por_id(self, id_vm):
-        # recorre todos los centros y sus listas de VMs
         for centro in self.controlador_centros.centros.recorrer():
             actual = centro.vms.cabeza
             while actual:
