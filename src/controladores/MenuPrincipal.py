@@ -1,5 +1,6 @@
 from controladores.CentroDatosMenu import menu_centros
 from controladores.MaquinaVirtualMenu import menu_vms
+from controladores.ContenedorMenu import menu_contenedores
 
 def mostrar_menu():
     print("1. Cargar archivo XML")
@@ -28,7 +29,7 @@ def menu_principal():
                 menu_vms(controlador_vms)
             elif opcion == 4:
                 print("\nGESTION DE CONTENEDORES")
-                #llamar al menu de contenedores
+                menu_contenedores(controlador_contenedores)
             elif opcion == 5:
                 print("\nGESTION DE SOLICITUDES")
                 #llamar al menu de solicitudes  

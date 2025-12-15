@@ -13,8 +13,18 @@ class MaquinaVirtual:
         # Contenedores dentro de esta VM
         self.contenedores = ListaDoble()
     
+    def tiene_recursos(self, cpu, ram):
+        return (self.cpu_us + cpu <= self.cpu_total and self.ram_us + ram <= self.ram_total)
+    
     def agregar_contenedor(self, contenedor):
         self.contenedores.insertar(contenedor)
+        self.cpu_us += contenedor.cpu
+        self.ram_us += contenedor.ram
     
     def recorrer(self):
         return self.contenedores.recorrer()
+    
+    def eliminar_contenedor(self, contenedor):
+        self.cpu_us -= contenedor.cpu
+        self.ram_us -= contenedor.ram
+    
