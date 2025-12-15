@@ -37,6 +37,13 @@ class ListaSimple:
             actual = actual.siguiente
         return False
     
+    def eliminar_primero(self): #dequeue
+        if self.esta_vacia():
+            return None
+        dato =self.cabeza.dato
+        self.cabeza = self.cabeza.siguiente
+        return dato
+    
     def recorrer(self):   #recorre la lista y devuelve una lista con los datos
         actual = self.cabeza
         while actual:

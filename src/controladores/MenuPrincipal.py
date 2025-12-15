@@ -2,10 +2,13 @@ print("probando")
 from controladores.CentroDatosController import CentroDatosController
 from controladores.MaquinaVirtualController import MaquinaVirtualController
 from controladores.ContenedorController import ContenedorController
+from controladores.SolicitudesController import SolicitudesController
+
 
 from controladores.CentroDatosMenu import menu_centros
 from controladores.MaquinaVirtualMenu import menu_vms
 from controladores.ContenedorMenu import menu_contenedores
+from xml_handler.parser_xml import ParserXml
 
 def mostrar_menu():
     print("1. Cargar archivo XML")
@@ -22,13 +25,18 @@ def menu_principal():
     controlador_centros = CentroDatosController()
     controlador_vms = MaquinaVirtualController(controlador_centros)
     controlador_contenedores = ContenedorController(controlador_vms)
+    controlador_solicitudes = SolicitudesController()
+    
+    parser = ParserXml(controlador_centros,controlador_vms,controlador_solicitudes)
     while True:
         try:    #el try para manejar los errores
             mostrar_menu()
             opcion = int(input("Seleccione una opcion: "))
             if opcion == 1:
                 print("Cargar archivo XML")
-                #llamar a la funcion
+                ruta = input("Ruta donde esta el XML: ")
+                exito, msg = parser.cargar_archivo(ruta)
+                print(msg)
             elif opcion == 2:
                 print("\nGESTION DE CENTRO DE DATOS")
                 menu_centros(controlador_centros)
