@@ -4,7 +4,7 @@ class ListaSimple:
         self.cabeza = None 
     
     def agregar(self, dato): 
-        nuevo_nodo = Nodo(dato):
+        nuevo_nodo = Nodo(dato)
         if not self.cabeza:     #verifica si la lista esta vacia
             self.cabeza = nuevo_nodo 
         else: 
@@ -16,7 +16,7 @@ class ListaSimple:
     def buscar(self, id):   #busca un nodo por id
         actual = self.cabeza
         while actual:
-            if actual.id == :
+            if actual.id == id:
                 return True
             actual = actual.siguiente 
     

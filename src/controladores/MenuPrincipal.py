@@ -1,3 +1,8 @@
+print("probando")
+from controladores.CentroDatosController import CentroDatosController
+from controladores.MaquinaVirtualController import MaquinaVirtualController
+from controladores.ContenedorController import ContenedorController
+
 from controladores.CentroDatosMenu import menu_centros
 from controladores.MaquinaVirtualMenu import menu_vms
 from controladores.ContenedorMenu import menu_contenedores
@@ -14,6 +19,9 @@ def mostrar_menu():
     print("9. Salir")
 
 def menu_principal():
+    controlador_centros = CentroDatosController()
+    controlador_vms = MaquinaVirtualController(controlador_centros)
+    controlador_contenedores = ContenedorController(controlador_vms)
     while True:
         try:    #el try para manejar los errores
             mostrar_menu()
