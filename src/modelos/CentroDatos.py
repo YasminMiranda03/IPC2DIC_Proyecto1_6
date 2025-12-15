@@ -1,4 +1,4 @@
-from estructuras.ListaSimple import ListaSinple
+from estructuras.ListaSimple import ListaSimple
 class CentroDatos:
     
     def __init__(self, id_centro, nombre, pais, ciudad, cpu, ram, almacenamiento):
