@@ -2,7 +2,10 @@ from estructuras.Nodo import Nodo
 class ListaSimple:
     def __init__(self): 
         self.cabeza = None 
-    
+        
+    def esta_vacia(self):
+        return self.cabeza is None
+
     def agregar(self, dato): 
         nuevo_nodo = Nodo(dato)
         if not self.cabeza:     #verifica si la lista esta vacia
