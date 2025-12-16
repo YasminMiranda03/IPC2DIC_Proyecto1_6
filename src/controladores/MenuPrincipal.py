@@ -8,7 +8,7 @@ from controladores.MaquinaVirtualMenu import menu_vms
 from controladores.ContenedorMenu import menu_contenedores
 from reportes.Graphviz import ReportesGraphviz
 from controladores.ControlSolicitudes import SolicitudesController
-
+print("borrar esto ")
 print("|** Bienvenido que accion desea realizar*|")
 def mostrar_menu():
     print("\n|**************CloudSync*****************|")
