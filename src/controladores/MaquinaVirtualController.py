@@ -40,7 +40,7 @@ class MaquinaVirtualController:
         return None
 
     def mostrar_detalle_vm(self, vm):
-        print("\n--- DETALLE VM ---")
+        print("***Datos del Vm")
         print(f"ID: {vm.id}")
         print(f"Centro asignado: {vm.centroAsignado}")
         print(f"SO: {vm.so}")

@@ -25,7 +25,7 @@ class ParserXml:
             return False, f"El archivo Xml no pudo ser cargado{str(e)}"
         
     def _procesar_centros(self, root):
-        centros = root.find('.//CentroDatos')
+        centros = root.find('.//centrosDatos')
         if centros is None:
             return
         for centro_elem in centros.findall('centro'):
@@ -49,7 +49,7 @@ class ParserXml:
     
     
     def _procesar_vms(self, root):
-        vms = root.find('.//MaquinaVirtual')
+        vms = root.find('.//maquinasVirtuales')
         if vms is None:
             return
     
@@ -81,7 +81,7 @@ class ParserXml:
         if contenedores_elem is None:
             return
 
-        vm, centro = self.controlador_Vms.buscar_vm(id_vm)
+        vm = self.controlador_Vms.buscar_vm_por_id(id_vm)
         if not vm:
             return
     
@@ -95,13 +95,13 @@ class ParserXml:
             cpu = int(recursos.find('cpu').text)
             ram = int(recursos.find('ram').text)
             
-            contenedor = Contenedor(id_contenedor,nombre,imagen,puerto,cpu,ram)        
+            contenedor = Contenedor(id_contenedor, nombre, imagen, cpu, ram, puerto)        
             vm.agregar_contenedor(contenedor)
             
-            print(f"El contenedor {id_contenedor} a sido agregado a {id_vm}")
+            print(f"    El contenedor {id_contenedor} a sido agregado a {id_vm}")
     
     def _procesar_solicitudes(self, root):
-        solicitudes = root.find('.//Solicitud')
+        solicitudes = root.find('.//solicitudes')
         if solicitudes is None:
             return
 
@@ -126,7 +126,7 @@ class ParserXml:
             print(f"Solicitud {id_solicitud} ha sido cargada exitosamente")
             
     def _procesar_instrucciones(self, root):
-        instrucciones = root.find('.//intrucciones')
+        instrucciones = root.find('.//instrucciones')
         if instrucciones is None:
             return
         print("***Ejecutando Instrucciones****\n")
@@ -152,14 +152,14 @@ class ParserXml:
         exito, msg = self.controlador_Vms.crear_vm(
             id_vm,centro,so,cpu,ram,almacenamiento,f"192.168.1.{cpu}"
         )
-        print(f"{'Cargo correctamente' if exito else'Ocurrio un error'} {msg}")
+        print(f"{'Se Cargo correctamente' if exito else'Ocurrio un error'} {msg}")
         
     def _ejecutar_migrar_vm(self, inst):
         vm_id = inst.find('vmId').text
         destino = inst.find('centroDestino').text
         
         exito, msg = self.controlador_Vms.migrar_vm(vm_id,destino)
-        print(f"{'Cargo correctamente' if exito else'Ocurrio un error'} {msg}")
+        print(f"{'Se cargo correctamente' if exito else'Ocurrio un error'} {msg}")
         
     def _ejecutar_procesar_solicitudes(self, inst):
         cantidad = int(inst.find('cantidad').text)

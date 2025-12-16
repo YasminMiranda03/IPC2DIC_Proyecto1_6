@@ -13,6 +13,13 @@ class ListaSimple:
                 actual = actual.siguiente 
             actual.siguiente = nuevo_nodo
     
+    
+    def insertar(self, dato):
+        self.agregar(dato)
+
+    def esta_vacia(self):
+        return self.cabeza is None
+        
     def buscar(self, id):   #busca un nodo por id
         actual = self.cabeza
         while actual:

@@ -1,8 +1,10 @@
 from estructuras.Nodo import Nodo
+import os
 class ListaDoble:
     def __init__(self):                 
         self.primero = None 
         self.ultimo = None
+        self.size = 0
     
     def agregar(self, dato): 
         nuevo_nodo = Nodo(dato)
@@ -13,26 +15,36 @@ class ListaDoble:
             self.ultimo.siguiente = nuevo_nodo
             nuevo_nodo.anterior = self.ultimo
             self.ultimo = nuevo_nodo
+        self.size += 1 
     
-    def buscar(self, id):   #busca un nodo por id           
+    def buscar(self, id_buscar):
         actual = self.primero
         while actual:
-            if actual.id == id:
+            if actual.dato.id == id_buscar:
                 return True
             actual = actual.siguiente
+        return False
     
-    def eliminar(self, id):  #elimina un nodo por id
+    def insertar(self, dato):
+        self.agregar(dato)
+
+    def esta_vacia(self):
+        return self.primero is None
+    
+    def eliminar(self, id_buscar):
         actual = self.primero
         while actual:
-            if actual.id == id:
-                if actual.anterior:    
+            if actual.dato.id == id_buscar:
+                if actual.anterior:
                     actual.anterior.siguiente = actual.siguiente
                 else:
                     self.primero = actual.siguiente
+
                 if actual.siguiente:
                     actual.siguiente.anterior = actual.anterior
                 else:
                     self.ultimo = actual.anterior
+                self.size -= 1
                 return True
             actual = actual.siguiente
         return False
@@ -40,6 +52,7 @@ class ListaDoble:
     #------------------------------------------------------------------------------------------------------
     def vacia(self):
         return self.primero == None
+    
     
     def agregar_final(self, dato):
         if self.vacia():

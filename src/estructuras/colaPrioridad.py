@@ -1,5 +1,4 @@
-from Nodo import Nodo
-
+from estructuras.Nodo import Nodo
 class ColaPrioridad:
     def __init__(self):
         self.primero = None
@@ -27,7 +26,7 @@ class ColaPrioridad:
         dato = self.primero.dato
         self.primero = self.primero.siguiente
         self.size -= 1
-        print("aqui ya se atendio la soli")
+        # print("aqui ya se atendio la soli")
         return dato
     
     def peek(self):
@@ -49,4 +48,4 @@ class ColaPrioridad:
     
     def obtener_tamanio(self):
         return self.size
-    #.        
+    

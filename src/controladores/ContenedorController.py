@@ -4,7 +4,7 @@ class ContenedorController:
     def __init__(self, controlador_vms):
         self.controlador_vms = controlador_vms
         
-    def desplegar_contenedores(self, id_vm, id_cont, nombre, imagen, cpu, ram, puerto):
+    def desplegar_contenedor(self, id_vm, id_cont, nombre, imagen, cpu, ram, puerto):
         vm = self.controlador_vms.buscar_vm_por_id(id_vm)
         if not vm:
             return False, "la vm no existe"
@@ -12,13 +12,14 @@ class ContenedorController:
         if not vm.tiene_recursos(cpu, ram):
             return False, "La vm no tiene recursos"
         
-        for cont in vm.contendores.recorrer():
+        for cont in vm.contenedores.recorrer():
             if cont.id == id_cont:
                 return False, "El contenedor ya existe"
             
         contendor =Contenedor(id_cont, nombre, imagen, cpu, ram, puerto)
         vm.agregar_contenedor(contendor)
         return True, "Contenedor exitoso"
+    
     
     def listar_contenedores(self, id_vm):
         vm = self.controlador_vms.buscar_vm_por_id(id_vm)

@@ -5,8 +5,7 @@ def menu_centros(controlador_centros):
             print("1. Crear centro de daots")
             print("2. Listar centros de datos")
             print("3. Buscar centro por id")
-            print("4. Eliminar")
-            print("5. Volver al menu principal")
+            print("4. Volver al menu principal")
             
             opcion = int(input("Seleccione una opcion: "))
             
@@ -27,19 +26,26 @@ def menu_centros(controlador_centros):
                 controlador_centros.listar_centros()
                 
             elif opcion == 3:
-                id = input("Ingrese el id para buscar: ")
+                id = input("Id del centro: ")
                 centro = controlador_centros.buscar_centro(id)
-                if centro:
-                    print(f"Centro encontrado: {centro.nombre}")
+                if centro is None:
+                    print(f"El centro {id} no existe")
                 else:
-                    print(f"Centro con id {id} no encontrado")
+                    print("\n Centro de Datos ")
+                    print(f"****************************************")
+                    print(f"ID: {centro.id_centro}")
+                    print(f"Nombre: {centro.nombre}")
+                    print(f"Ubicación: {centro.pais}, {centro.ciudad}")
+                    print(f"CPU disponible: {centro.cpu_disponible}/{centro.cpu_total}")
+                    print(f"RAM disponible: {centro.ram_disponible}/{centro.ram_total}")
+                    print(f"Almacenamiento disponible: {centro.almacenamiento_disponible}/{centro.almacenamiento_total}")
+            
+            # elif opcion == 4:
+            #     id = input("id del centro para eliminar: ")
+            #     exito, msg = controlador_centros.eliminar_centro(id)
+            #     print(msg)
             
             elif opcion == 4:
-                id = input("id del centro para eliminar: ")
-                exito, msg = controlador_centros.eliminar_centro(id)
-                print(msg)
-            
-            elif opcion == 5:
                 break
             
             else:
