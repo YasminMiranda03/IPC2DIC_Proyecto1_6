@@ -8,6 +8,9 @@ from controladores.MaquinaVirtualMenu import menu_vms
 from controladores.ContenedorMenu import menu_contenedores
 from reportes.Graphviz import ReportesGraphviz
 from controladores.ControlSolicitudes import SolicitudesController
+from controladores.controlSolicitudesMenu import solicitud_menu
+
+
 print("borrar esto ")
 print("|** Bienvenido que accion desea realizar*|")
 def mostrar_menu():
@@ -49,7 +52,7 @@ def menu_principal():
                 menu_contenedores(controlador_contenedores)
             elif opcion == 5:
                 print("\nGESTION DE SOLICITUDES")
-                #llamar al menu de solicitudes  
+                solicitud_menu(controlador_solicitudes)
             elif opcion == 6:
                 print("\nREPORTES GRAPHVIZ")
                 reportes = ReportesGraphviz(controlador_centros, controlador_vms, controlador_solicitudes.cola)
