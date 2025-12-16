@@ -15,7 +15,7 @@ class MaquinaVirtual:
 # Contenedores dentro de esta VM
     
     def tiene_recursos(self, cpu, ram):
-        return (self.cpu_us + cpu <= self.cpu and self.ram_us + ram <= self.ram)
+        return (self.cpu_us + cpu <= self.cpu) and (self.ram_us + ram <= self.ram)
     
     def agregar_contenedor(self, contenedor):
         self.contenedores.insertar(contenedor)

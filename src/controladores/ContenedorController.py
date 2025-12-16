@@ -12,7 +12,7 @@ class ContenedorController:
         if not vm.tiene_recursos(cpu, ram):
             return False, "La vm no tiene recursos"
         
-        for cont in vm.contenedores.recorrer():
+        for cont in vm.contenedores.recorrer().recorrer():
             if cont.id == id_cont:
                 return False, "El contenedor ya existe"
             
@@ -27,7 +27,7 @@ class ContenedorController:
             print("La vm no existe")
             return
         si_hay = False
-        for cont in vm.contenedores.recorrer():
+        for cont in vm.contenedores.recorrer().recorrer():
             si_hay= True
             print("-" *40)
             print(f"id: {cont.id}")
@@ -45,7 +45,7 @@ class ContenedorController:
         if not vm:
             return False, "La VM no existe"
 
-        for cont in vm.contenedores.recorrer():
+        for cont in vm.contenedores.recorrer().recorrer():
             if cont.id == id_cont:
                 if cont.estado == "Detenido" and nuevo_estado == "Pausado":
                     return False, "No se puede pausar un contenedor detenido"
@@ -60,22 +60,27 @@ class ContenedorController:
         if not vm:
             return False, "La VM no existe"
 
-        actual = vm.contenedores.head
+        actual = vm.contenedores.primero
         anterior = None
 
         while actual:
-            if actual.data.id == id_cont:
-                vm.eliminar_contenedor(actual.data)
+            if actual.dato.id == id_cont:
+                vm.eliminar_contenedor(actual.dato)
 
                 if anterior:
-                    anterior.next = actual.next
+                    anterior.siguiente = actual.siguiente
                 else:
-                    vm.contenedores.head = actual.next
+                    vm.contenedores.primero = actual.siguiente
+                if actual.siguiente:
+                    actual.siguiente.anterior = anterior
+                else:
+                    vm.contenedores.ultimo = anterior
 
+                vm.contenedores.size -=1
                 return True, "Contenedor eliminado correctamente"
 
             anterior = actual
-            actual = actual.next
+            actual = actual.siguiente
 
         return False, "El contenedor no existe"
         

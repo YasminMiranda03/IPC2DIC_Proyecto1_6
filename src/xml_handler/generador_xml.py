@@ -15,7 +15,7 @@ class GenerarXML:
             timestamp.text = datetime.now().isoformat()
             
             self._agregar_estado_centros(root)
-            self._agregar_estadistica(root)
+            self._agregar_estadisticas(root)
             xml_str = minidom.parseString(ET.tostring(root,encoding='unicode')).toprettyxml(indent=" ")
             with open(ruta_salida, 'w',encoding='utf-8') as f:
                 f.write(xml_str)
@@ -26,13 +26,13 @@ class GenerarXML:
     def _agregar_estado_centros(self, root):
         estado_centros = ET.SubElement(root, 'estadoCentros')
         
-        centros = self.controlador_centros.listar_todos()
-        actual= centros.primero
+        lista = self.controlador_centros.centros
+        actual = lista.cabeza
         
         while actual is not None:
             centro = actual.dato
             
-            centro_elem = ET.SubElement(estado_centros, 'centro', id-centro.id)
+            centro_elem = ET.SubElement(estado_centros, 'centro', id=centro.id_centro)
             nombre = ET.SubElement(centro_elem, 'nombre')
             nombre.text = centro.nombre
             
@@ -72,8 +72,8 @@ class GenerarXML:
         total_vms = 0
         total_contenedores = 0
         
-        centros = self.controlador_centros.listar_todos()
-        actual = centros.primero
+        lista = self.controlador_centros.centros
+        actual = lista.cabeza
         
         while actual is not None:
             centro = actual.dato

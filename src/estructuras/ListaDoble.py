@@ -1,4 +1,5 @@
 from estructuras.Nodo import Nodo
+from estructuras.ListaSimple import ListaSimple
 import os
 class ListaDoble:
     def __init__(self):                 
@@ -85,6 +86,7 @@ class ListaDoble:
             print(aux.dato)
             aux = aux.anterior
     
+    
     def obtener_size(self):
         return self.size
     
@@ -111,4 +113,12 @@ class ListaDoble:
             self.ultimo = self.ultimo.anterior
             self.ultimo.siguiente = None
             self.size -= 1
+    def recorrer(self):
+        lista = ListaSimple()
+        aux = self.primero
+        while aux is not None:
+            lista.agregar(aux.dato)
+            aux = aux.siguiente
+        return lista
+
     #------------------------------------------------------------------------------------------------------

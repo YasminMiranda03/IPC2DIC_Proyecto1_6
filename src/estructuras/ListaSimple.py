@@ -44,7 +44,7 @@ class ListaSimple:
             actual = actual.siguiente
         return False
     
-    def eliminar_primero(self): #dequeue
+    def eliminar_primero(self): 
         if self.esta_vacia():
             return None
         dato =self.cabeza.dato

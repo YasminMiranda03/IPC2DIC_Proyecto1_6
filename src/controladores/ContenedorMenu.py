@@ -26,7 +26,8 @@ def menu_contenedores(controlador_contenedores):
 
             elif opcion == 2:
                 id_vm = input("ID de la VM: ")
-                controlador_contenedores.listar_contenedores_vm(id_vm)
+                controlador_contenedores.listar_contenedores(id_vm)
+
 
             elif opcion == 3:
                 id_vm = input("ID de la VM: ")
