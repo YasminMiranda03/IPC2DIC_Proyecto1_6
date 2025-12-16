@@ -120,9 +120,6 @@ class ParserXml:
             self.controlador_solicitudes.agregar_solicitud(
             id_solicitud,cliente,tipo,prioridad,cpu,ram,almacenamiento,tiempo_estimmado)
             
-       
-       
-       
             print(f"Solicitud {id_solicitud} ha sido cargada exitosamente")
             
     def _procesar_instrucciones(self, root):
@@ -141,6 +138,7 @@ class ParserXml:
                 self._ejecutar_procesar_solicitudes(inst)
             elif tipo == 'balancearCarga':
                 print("Balanceo de Carga listo")
+                
     def _ejecutar_crear_vm(self, inst):
         id_vm = inst.find('id').text
         centro = inst.find('centro').text

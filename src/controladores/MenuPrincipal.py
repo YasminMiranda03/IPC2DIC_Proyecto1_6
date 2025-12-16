@@ -28,7 +28,6 @@ def menu_principal():
     controlador_vms = MaquinaVirtualController(controlador_centros)
     controlador_contenedores = ContenedorController(controlador_vms)
     controlador_solicitudes = SolicitudesController()
-
     while True:
         try:    #el try para manejar los errores
             mostrar_menu()
