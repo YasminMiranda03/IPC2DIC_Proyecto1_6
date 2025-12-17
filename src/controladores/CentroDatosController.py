@@ -34,19 +34,22 @@ class CentroDatosController:
             print(f"Ubicación: {centro.pais}, {centro.ciudad}")
             print(f"CPU disponible: {centro.cpu_disponible}/{centro.cpu_total}")
             print(f"RAM disponible: {centro.ram_disponible}/{centro.ram_total}")
-            print(f"Almacenamiento disponible: {centro.almacenamiento_disponible}")
+            print(f"Almacenamiento disponible: {centro.almacenamiento_disponible}/{centro.almacenamiento_total}")
 
-    def eliminar_centro(self, id_centro):
-        actual = self.centros.cabeza
-        anterior = None
+    def centro_mayor_recursos(self):
+        if self.centros.esta_vacia():
+            return None
 
-        while actual:
-            if actual.dato.id_centro == id_centro:
-                if anterior:
-                    anterior.siguiente = actual.siguiente
-                else:
-                    self.centros.cabeza = actual.siguiente
-                return True, "Centro eliminado correctamente"
-            anterior = actual
-            actual = actual.siguiente
-        return False, "Centro de datos no encontrado"
+        mayor = None
+
+        for centro in self.centros.recorrer():
+            if mayor is None:
+                mayor = centro
+            else:
+                if centro.cpu_total > mayor.cpu_total:
+                    mayor = centro
+                elif centro.cpu_total == mayor.cpu_total:
+                    if centro.ram_total > mayor.ram_total:
+                        mayor = centro
+
+        return mayor

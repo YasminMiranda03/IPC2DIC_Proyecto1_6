@@ -2,7 +2,7 @@ def menu_centros(controlador_centros):
     while True:
         try:
             print("\n--menu centro datos--")
-            print("1. Crear centro de daots")
+            print("1. Mostrar centro con más recursos")
             print("2. Listar centros de datos")
             print("3. Buscar centro por id")
             print("4. Volver al menu principal")
@@ -10,17 +10,18 @@ def menu_centros(controlador_centros):
             opcion = int(input("Seleccione una opcion: "))
             
             if opcion == 1:
-                id = input("Id del centro: ")
-                nombre = input("Nombre del centro: ")
-                pais = input("Pais: ")
-                ciudad = input("ciudad: ")
-                cpu = int(input("Capacidad CPU: "))
-                ram = int(input("Capacidad RAM: "))
-                almacenamiento = int(input("almacenamiento: "))
-                
-                exito, msg = controlador_centros.crear_centro(
-                    id,nombre,pais,ciudad,cpu,ram,almacenamiento)
-                print(msg)
+                centro = controlador_centros.centro_mayor_recursos()
+                if centro is None:
+                    print("No hay centros registrados")
+                else:
+                    print("\n Centro de Datos con más recursos ")
+                    print(f"**************")
+                    print(f"ID: {centro.id_centro}")
+                    print(f"Nombre: {centro.nombre}")
+                    print(f"Ubicación: {centro.pais}, {centro.ciudad}")
+                    print(f"CPU disponible: {centro.cpu_disponible}/{centro.cpu_total}")
+                    print(f"RAM disponible: {centro.ram_disponible}/{centro.ram_total}")
+                    print(f"Almacenamiento disponible: {centro.almacenamiento_disponible}/{centro.almacenamiento_total}")
                 
             elif opcion == 2:
                 controlador_centros.listar_centros()
