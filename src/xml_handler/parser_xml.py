@@ -8,21 +8,30 @@ class ParserXml:
         self.controlador_centros = controlador_centros
         self.controlador_Vms = control_Vms
         self.controlador_solicitudes = controlador_solicitudes
+        self.root = None
     
     def cargar_archivo(self, ruta):
         try:
             tree = ET.parse(ruta)
             root = tree.getroot()
-            
+            self.root = None
             self._procesar_centros(root)
             self._procesar_vms(root)
             self._procesar_solicitudes(root)
             
-            self._procesar_instrucciones(root)
+            # self._procesar_instrucciones(root)
             return True, "El archivo Xml ha sido cargado correctamente"
-        
         except Exception as e:
             return False, f"El archivo Xml no pudo ser cargado{str(e)}"
+    
+    def ejecutar_instrucciones(self):
+        if self.root is None:
+            return False, "Primero debe cargar un XML"
+        self._procesar_instrucciones(self.root)
+        return True, "Instrucciones ejecutadas"
+    
+    
+    
         
     def _procesar_centros(self, root):
         centros = root.find('.//centrosDatos')

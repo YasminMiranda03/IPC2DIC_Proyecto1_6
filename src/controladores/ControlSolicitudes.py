@@ -30,7 +30,7 @@ class SolicitudesController:
             print("La cola está vacía.")
             return
         print("\n----- COLA DE SOLICITUDES (Mayor -> Menor prioridad) -----")
-        lista = self.cola.registrar_lista()  
+        lista = self.cola.obtener_lista()  
         actual = lista.cabeza
         i = 1
         while actual is not None:
