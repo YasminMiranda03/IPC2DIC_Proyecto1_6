@@ -59,7 +59,9 @@ def menu_principal():
                 reportes.generar_reportes()
             elif opcion == 7:
                 print("\nGENERAR XML DE SALIDA")
-                #llamar a la funcion de generar xml de salida
+                generador = GenerarXML(controlador_centros)
+                exito, msg = generador.generar_salida("salida.xml") 
+                print(msg)
             elif opcion == 8:
                 print("\nHISTORIAL DE OPERACIONES")
                 #llamar a la funcion de historial de operacion
