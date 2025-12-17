@@ -64,10 +64,4 @@ class ColaPrioridad:
             actual.dato.mostrar_info()
             actual = actual.siguiente
     
-    # def registrar_lista(self):
-    #     lista = ListaSimple()
-    #     actual = self.primero
-    #     while actual is not None:
-    #         lista.agregar(actual.dato)
-    #         actual = actual.siguiente
-    #     return lista
+

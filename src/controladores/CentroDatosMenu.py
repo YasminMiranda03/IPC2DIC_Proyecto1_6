@@ -41,11 +41,7 @@ def menu_centros(controlador_centros):
                     print(f"RAM disponible: {centro.ram_disponible}/{centro.ram_total}")
                     print(f"Almacenamiento disponible: {centro.almacenamiento_disponible}/{centro.almacenamiento_total}")
             
-            # elif opcion == 4:
-            #     id = input("id del centro para eliminar: ")
-            #     exito, msg = controlador_centros.eliminar_centro(id)
-            #     print(msg)
-            
+
             elif opcion == 4:
                 break
             
