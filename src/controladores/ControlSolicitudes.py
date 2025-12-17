@@ -17,7 +17,7 @@ class SolicitudesController:
         procesadas = 0
         while n > 0 and not self.cola.esta_vacia():
             solicitud = self.cola.dequeue()
-            print(f"Procesando: {solicitud.id} | Prioridad: {solicitud.prioridad} | Tipo: {solicitud.tipo}")
+            print(f"Procesando: {solicitud.id} ,Prioridad: {solicitud.prioridad} , Tipo: {solicitud.tipo}")
             n -= 1
             procesadas += 1
 
@@ -29,13 +29,13 @@ class SolicitudesController:
         if self.cola.esta_vacia():
             print("La cola está vacía.")
             return
-        print("\n----- COLA DE SOLICITUDES (Mayor -> Menor prioridad) -----")
+        print("\nSolicitudes")
         lista = self.cola.obtener_lista()  
         actual = lista.cabeza
-        i = 1
+        contador = 1
         while actual is not None:
-            s = actual.dato
-            print(f"{i}. ID: {s.id} | Cliente: {s.cliente} | Tipo: {s.tipo} | Prioridad: {s.prioridad}")
-            print(f"   Recursos: CPU={s.cpu}, RAM={s.ram}, DISK={s.almacenamiento} | Tiempo: {s.tiempo}")
+            ndato = actual.dato
+            print(f"{contador}. ID: {ndato.id} , Cliente: {ndato.cliente} , Tipo: {ndato.tipo} , Prioridad: {ndato.prioridad}")
+            print(f"   Recursos: CPU={ndato.cpu}, RAM={ndato.ram}, DISK={ndato.almacenamiento} , Tiempo: {ndato.tiempo}")
             actual = actual.siguiente
-            i += 1
+            contador += 1

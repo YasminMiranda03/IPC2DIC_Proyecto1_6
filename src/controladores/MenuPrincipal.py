@@ -56,7 +56,7 @@ def menu_principal():
             elif opcion == 6:
                 print("\nREPORTES GRAPHVIZ")
                 reportes = ReportesGraphviz(controlador_centros, controlador_vms, controlador_solicitudes.cola)
-                reportes.graficar_centros()
+                reportes.generar_reportes()
             elif opcion == 7:
                 print("\nGENERAR XML DE SALIDA")
                 #llamar a la funcion de generar xml de salida

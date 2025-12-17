@@ -1,9 +1,0 @@
-digraph ListaSimpleCentros {
-    rankdir=LR;
-    node [shape=record];
-
-    nodo0 [label="DC001|DataCenter Principal|Guatemala City|CPU: 60/64\nRAM: 248/256\nDISK: 420/500\nVMs: 1"];
-    nodo1 [label="DC002|DataCenter Respaldo|Antigua Guatemala|CPU: 20/32\nRAM: 104/128\nDISK: 140/300\nVMs: 2"];
-
-    nodo0 -> nodo1;
-}
